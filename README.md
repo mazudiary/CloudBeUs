@@ -46,7 +46,7 @@ Built with HTML, CSS, and JavaScript — and a whole lot of love 💖
 
 ## 🌠 Live Demo
 
-✨ [Experience our starry night](https://your-demo-link.com) ✨  
+✨ [Experience our starry night](https://mazudiary.github.io/CloudBeUs/) ✨  
 *(Replace with your deployed link — let your love shine online!)*
 
 ---
