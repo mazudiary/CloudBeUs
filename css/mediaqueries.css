@@ -1,0 +1,43 @@
+
+@media (max-width: 768px) {
+    .message { font-size: 36px; }
+    .sub-message { font-size: 20px; }
+    .love-note { font-size: 22px; }
+    .bangle { width: 70px; height: 70px; }
+    .moon { width: 90px; height: 90px; }
+    .moon::before { width: 130px; height: 130px; top: -15px; left: -15px; }
+    .image-overlay { left: 84px; width: 54%; }
+    .image-overlay-text { font-size: 36px; padding: 8px 15px; }
+    .constellation-message { font-size: 18px; }
+    .overlay-heart, .overlay-sparkle { width: 5px; height: 5px; }
+    .overlay-heart::before, .overlay-heart::after { width: 5px; height: 5px; }
+    .overlay-heart::before { top: -2.5px; }
+    .overlay-heart::after { left: 2.5px; }
+    .moon-sparkle { width: 3px; height: 3px; }
+    .moon-heart { width: 5px; height: 5px; }
+    .moon-heart::before, .moon-heart::after { width: 5px; height: 5px; }
+    .moon-heart::before { top: -2.5px; }
+    .moon-heart::after { left: 2.5px; }
+  }
+  
+  @media (max-width: 480px) {
+    .container { padding: 25px; }
+    .message { font-size: 28px; }
+    .sub-message { font-size: 18px; }
+    .love-note { font-size: 20px; }
+    .bangle { width: 60px; height: 60px; }
+    .moon { width: 70px; height: 70px; }
+    .moon::before { width: 100px; height: 100px; top: -15px; left: -15px; }
+    .image-overlay-text { font-size: 28px; padding: 6px 10px; }
+    .constellation-message { font-size: 16px; }
+    .overlay-heart, .overlay-sparkle { width: 4px; height: 4px; }
+    .overlay-heart::before, .overlay-heart::after { width: 4px; height: 4px; }
+    .overlay-heart::before { top: -2px; }
+    .overlay-heart::after { left: 2px; }
+    .moon-sparkle { width: 2px; height: 2px; }
+    .moon-heart { width: 4px; height: 4px; }
+    .moon-heart::before, .moon-heart::after { width: 4px; height: 4px; }
+    .moon-heart::before { top: -2px; }
+    .moon-heart::after { left: 2px; }
+  }
+  

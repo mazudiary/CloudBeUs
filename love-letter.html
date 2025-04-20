@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Love Letter</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/love-letter.css">
+</head>
+<body>
+  <div class="stars"></div>
+  <button class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="navbar">
+    <a href="index.html" class="nav-link">Could Be Us</a>
+    <a href="love-story.html" class="nav-link">Our Love Story</a>
+    <a href="love-letter.html" class="nav-link active">Our Love Letter</a>
+    <a href="wedding-traditions.html" class="nav-link">Our Eternal Rituals</a>
+    <a href="holding-hands.html" class="nav-link">Our Forest Spell</a>
+    <a href="hugging.html" class="nav-link">Our Lagoon Glow</a>
+  </nav>
+
+  <canvas id="heartCanvas"></canvas>
+  <canvas id="bubbleCanvas"></canvas>
+
+
+
+  <div class="glow"></div>
+
+  <div class="letter-container">
+    <img src="assets/wax-seal.png" alt="Wax Seal" class="wax-seal">
+    <div class="letter-content">
+      <h1 id="letterTitle">My Dearest Love</h1>
+      <div class="ink-smudge top"></div>
+      <p id="letterText">
+        With every heartbeat, I write these words to you. You are my stars, my dreams, my forever. 
+        This letter carries my soul, sealed with a kiss, promising to love you through every sunrise and sunset.
+      </p>
+      <div class="ink-smudge bottom"></div>
+      <div class="polaroid-frame">
+        <img src="./assets/love-letter.webp" alt="Couple Image" class="polaroid-image">
+        <div class="polaroid-glow"></div>
+      </div>
+      <button id="kissButton" class="kiss-button">Sealed with a Kiss</button>
+    </div>
+  </div>
+
+  <section class="vows-section">
+    <h2>Our Vows</h2>
+    <div id="vowsText" class="vows-text"></div>
+    <textarea id="userVows" placeholder="Write your vows to your beloved..."></textarea>
+    <button id="submitVows" class="love-button">Seal Your Vows</button>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/love-letter.js"></script>
+</body>
+</html>

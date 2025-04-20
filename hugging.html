@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Lagoon Glow</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/hugging.css">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&Caveat&Sacramento&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="lagoon-sky"></div>
+  <button class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="navbar">
+    <a href="index.html" class="nav-link">Could Be Us</a>
+    <a href="love-story.html" class="nav-link">Our Love Story</a>
+    <a href="love-letter.html" class="nav-link">Our Love Letter</a>
+    <a href="wedding-traditions.html" class="nav-link">Our Eternal Rituals</a>
+    <a href="holding-hands.html" class="nav-link">Our Forest Spell</a>
+    <a href="hugging.html" class="nav-link active">Our Lagoon Glow</a>
+  </nav>
+
+  <canvas id="rippleCanvas"></canvas>
+  <canvas id="starlightCanvas"></canvas>
+
+  <div class="hug-container">
+    <img src="assets/lotus.png" alt="Lotus Flower" class="lotus-deco top-left">
+    <img src="assets/lotus.png" alt="Lotus Flower" class="lotus-deco bottom-right">
+    <div class="hug-content">
+      <h1 id="hugTitle">Our Lagoon Glow</h1>
+      <p id="hugIntro">
+        My moonbeam love, your hugs ripple through the lagoon—stars swirl, lotuses hum, and bubbles glow with our peace!
+      </p>
+    </div>
+  </div>
+
+  <section class="locket-section">
+    <div class="locket-frame">
+      <img src="assets/hugging.gif" alt="Our Lagoon Glow" class="locket-image">
+      <div class="locket-glow"></div>
+      <div class="secret-message">You’re my serene haven! 🌟</div>
+    </div>
+    <p>
+      My love, your embrace is a glowing lagoon where my heart finds calm under starlight.
+    </p>
+  </section>
+
+  <section class="message-section">
+    <h2>Sing a Lullaby Hug</h2>
+    <div id="messageText" class="message-text"></div>
+    <textarea id="messageInput" placeholder="Write a lullaby for our hugs, my moonbeam love..."></textarea>
+    <button id="submitMessage" class="love-button">Sing Our Lullaby 🌊</button>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/hugging.js"></script>
+</body>
+</html>

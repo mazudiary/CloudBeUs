@@ -1,0 +1,411 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Caveat', cursive;
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #B2F7FF 0%, #D9CCFF 100%);
+  min-height: 100vh;
+  cursor: url('../assets/wand.png'), auto;
+}
+
+/* Lagoon Sky */
+.lagoon-sky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -4;
+}
+
+.reflecting-star {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #E6F9FF;
+  border-radius: 50%;
+  animation: ripple 3s infinite ease-in-out;
+}
+
+.reflecting-star.small { width: 4px; height: 4px; }
+.reflecting-star.medium { width: 6px; height: 6px; }
+.reflecting-star.large { width: 8px; height: 8px; }
+
+@keyframes ripple {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+  width: 100%;
+}
+
+.nav-link {
+  color: #003366;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.8rem;
+  text-decoration: none;
+  padding: 6px 12px;
+  background: rgba(230, 249, 255, 0.7);
+  border-radius: 20px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(230, 249, 255, 1);
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(178, 247, 255, 0.8);
+}
+
+.nav-link.active {
+  background: #E6F9FF;
+  color: #00244D;
+}
+
+/* Music Toggle */
+.music-toggle {
+  position: fixed;
+  top: 100px;
+  right: 170px;
+  background: linear-gradient(45deg, #B2F7FF, #D9CCFF);
+  color: #003366;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(178, 247, 255, 0.8);
+}
+
+/* Canvases */
+#rippleCanvas, #starlightCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+/* Hug Container */
+.hug-container {
+  background: rgba(230, 249, 255, 0.9);
+  border-radius: 40px;
+  box-shadow: 0 6px 25px rgba(178, 247, 255, 0.5);
+  max-width: 650px;
+  width: 90%;
+  margin: 100px auto 30px;
+  padding: 25px;
+  position: relative;
+  z-index: 1;
+  border: 2px dashed #B2F7FF;
+  animation: floatIn 1.5s ease forwards;
+}
+
+@keyframes floatIn {
+  0% { transform: translateY(50px) scale(0.9); opacity: 0; }
+  50% { transform: translateY(-10px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.lotus-deco {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  animation: humLotus 2s infinite ease-in-out;
+}
+
+.lotus-deco.top-left { top: -20px; left: -20px; transform: rotate(10deg); }
+.lotus-deco.bottom-right { bottom: -20px; right: -20px; transform: rotate(-10deg); }
+
+@keyframes humLotus {
+  0%, 100% { transform: rotate(10deg) scale(1); }
+  50% { transform: rotate(10deg) scale(1.1); }
+}
+
+.hug-content {
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 2.8rem;
+  color: #003366;
+  text-shadow: 0 0 5px rgba(178, 247, 255, 0.7);
+  margin-bottom: 10px;
+  animation: glowText 2s infinite ease-in-out;
+}
+
+@keyframes glowText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #2F3C4A;
+  line-height: 1.5;
+  animation: rippleIn 2s ease forwards;
+}
+
+@keyframes rippleIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Locket Section */
+.locket-section {
+  max-width: 650px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.locket-frame {
+  position: relative;
+  margin: 20px auto;
+  width: 300px;
+  height: 300px;
+  background: url('../assets/lagoon-locket.png') no-repeat center/contain;
+}
+
+.locket-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  opacity: 0;
+  animation: revealLocket 1s ease forwards 1s;
+}
+
+.locket-image:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  filter: brightness(1.3) drop-shadow(0 0 12px #B2F7FF);
+}
+
+@keyframes revealLocket {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.locket-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(178, 247, 255, 0.5) 10%, transparent 70%);
+  opacity: 0.6;
+  animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.1); }
+}
+
+.secret-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Sacramento', cursive;
+  font-size: 1.2rem;
+  color: #FFD700;
+  text-shadow: 0 0 5px rgba(178, 247, 255, 0.7);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.locket-frame:hover .secret-message {
+  opacity: 1;
+}
+
+.locket-section p {
+  font-family: 'Sacramento', cursive;
+  font-size: 1.4rem;
+  color: #2F3C4A;
+}
+
+/* Message Section */
+.message-section {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+  background: rgba(230, 249, 255, 0.9);
+  border-radius: 30px;
+  border: 2px dashed #D9CCFF;
+}
+
+.message-section h2 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 2.2rem;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.message-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #2F3C4A;
+  min-height: 40px;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.message-section textarea {
+  width: 100%;
+  max-width: 500px;
+  height: 90px;
+  padding: 10px;
+  border: 2px dashed #B2F7FF;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  resize: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2F3C4A;
+}
+
+.love-button {
+  margin-top: 10px;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  background: linear-gradient(45deg, #B2F7FF, #D9CCFF);
+  color: #003366;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Caveat', cursive;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.love-button:hover {
+  background: linear-gradient(45deg, #80E6FF, #B399FF);
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(178, 247, 255, 0.8);
+}
+
+/* Ripple Animation */
+.ripple {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: url('../assets/ripple.png') no-repeat center/contain;
+  animation: pulseRipple 5s linear forwards;
+}
+
+@keyframes pulseRipple {
+  0% { transform: scale(0.5); opacity: 0.5; }
+  50% { transform: scale(1.5); opacity: 0.3; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Starlight Animation */
+.starlight {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: url('../assets/fairy-dust.png') no-repeat center/contain;
+  animation: swirlStarlight 4s infinite ease-in-out;
+}
+
+@keyframes swirlStarlight {
+  0% { transform: translate(0, 0); opacity: 0.5; }
+  50% { transform: translate(var(--swirl-x), var(--swirl-y)); opacity: 1; }
+  100% { transform: translate(0, 0); opacity: 0.5; }
+}
+
+/* Lotus Animation */
+.lotus {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url('../assets/lotus.png') no-repeat center/contain;
+  animation: floatLotus 5s ease-out forwards;
+}
+
+@keyframes floatLotus {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--float-x), -100px) scale(0.8); }
+}
+
+/* Bubble Animation */
+.bubble {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: url('../assets/bubble.png') no-repeat center/contain;
+  opacity: 0;
+  animation: floatBubble 2s ease-out forwards;
+}
+
+.bubble::after {
+  content: var(--bubble-message);
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Caveat', cursive;
+  font-size: 0.8rem;
+  color: #FFD700;
+  text-shadow: 0 0 3px rgba(178, 247, 255, 0.5);
+}
+
+@keyframes floatBubble {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--float-x), -100px) scale(0.5); }
+}
+
+/* Fairy Dust */
+.fairy-dust {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: url('../assets/fairy-dust.png') no-repeat center/contain;
+  opacity: 0;
+  animation: sparkleDust 1s ease-out forwards;
+}
+
+@keyframes sparkleDust {
+  0% { opacity: 0.8; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5) translate(var(--dust-x), var(--dust-y)); }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .hug-container {
+    padding: 35px;
+  }
+
+  h1 { font-size: 3.2rem; }
+}

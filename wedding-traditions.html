@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Eternal Rituals</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/wedding-traditions.css">
+</head>
+<body>
+  <div class="stars"></div>
+  <button class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="navbar">
+    <a href="index.html" class="nav-link">Could Be Us</a>
+    <a href="love-story.html" class="nav-link">Our Love Story</a>
+    <a href="love-letter.html" class="nav-link">Our Love Letter</a>
+    <a href="wedding-traditions.html" class="nav-link active">Our Eternal Rituals</a>
+    <a href="holding-hands.html" class="nav-link">Our Forest Spell</a>
+    <a href="hugging.html" class="nav-link">Our Lagoon Glow</a>
+  </nav>
+
+  <canvas id="heartCanvas"></canvas>
+  <canvas id="bubbleCanvas"></canvas>
+
+
+  <div class="glow"></div>
+
+  <div class="traditions-container">
+    <img src="assets/wax-seal.png" alt="Wax Seal" class="wax-seal">
+    <div class="traditions-content">
+      <h1 id="traditionsTitle">Our Eternal Rituals</h1>
+      <div class="ink-smudge top"></div>
+      <p id="traditionsIntro">
+        My eternal flame, these rituals—our unity candle’s glow and our sacred vows—ignite our love’s constellation, a fire that burns beneath the stars forever.
+      </p>
+      <div class="ink-smudge bottom"></div>
+    </div>
+  </div>
+
+  <section class="traditions-list">
+    <div class="tradition-item unity-candle">
+      <div class="tradition-content">
+        <div class="heart-draw"></div>
+        <div class="flame-icon"></div>
+        <img src="assets/ribbon.png" alt="Ribbon" class="tradition-ribbon">
+        <h3>Unity Candle: Our Shared Flame</h3>
+        <p>
+          My heart’s light, we’ll kindle a single flame from our twin candles, their glow dancing in the twilight, a radiant vow of our souls’ union. As the wax melts and the fire crackles, our love merges into one eternal beacon, warming the night with our forever.
+        </p>
+        <button class="vow-button">See Our Candle Vow</button>
+        <div class="vow-text"></div>
+      </div>
+    </div>
+    <div class="tradition-item wedding-vows">
+      <div class="tradition-content">
+        <div class="heart-draw"></div>
+        <div class="scroll-icon"></div>
+        <img src="assets/ribbon.png" alt="Ribbon" class="tradition-ribbon">
+        <h3>Wedding Vows: Our Soul’s Song</h3>
+        <p>
+          My muse, our vows will spill like ink onto starlit parchment, each word a whispered promise carried by the wind. In the hush of our sacred moment, I’ll speak my heart’s truth, binding us with poetry that echoes through eternity.
+        </p>
+        <button class="vow-button">See Our Vow</button>
+        <div class="vow-text"></div>
+      </div>
+    </div>
+    <div class="tradition-item">
+      <div class="tradition-content">
+        <div class="heart-draw"></div>
+        <img src="assets/ribbon.png" alt="Ribbon" class="tradition-ribbon">
+        <h3>Handfasting</h3>
+        <p>
+          My beloved, with a cord of crimson, we’ll bind our hands, our fingers entwined like vines, echoing the unity candle’s glow in a knot of eternal love.
+        </p>
+        <button class="vow-button">See Our Vow</button>
+        <div class="vow-text"></div>
+      </div>
+    </div>
+    <div class="tradition-item">
+      <div class="tradition-content">
+        <div class="heart-draw"></div>
+        <img src="assets/ribbon.png" alt="Ribbon" class="tradition-ribbon">
+        <h3>Rose Ceremony</h3>
+        <p>
+          My blooming heart, I’ll offer you a rose, its petals kissed by our vows’ fire, the first gift to my wife under a canopy of stars.
+        </p>
+        <button class="vow-button">See Our Vow</button>
+        <div class="vow-text"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="polaroid-section">
+    <div class="polaroid-frame">
+      <img src="./assets/wedding-traditions.webp" alt="Our Candlelit Vow" class="polaroid-image">
+      <div class="polaroid-glow"></div>
+    </div>
+    <p>
+      My butterfly, picture our hands lighting the unity candle, our vows unfurling like scrolls, our love aglow in a sea of starlight and flame.
+    </p>
+  </section>
+
+  <section class="custom-tradition">
+    <h2>Write Our Sacred Vow</h2>
+    <div id="customTraditionText" class="custom-tradition-text"></div>
+    <textarea id="customTradition" placeholder="Pen our vow, my eternal flame..."></textarea>
+    <button id="submitTradition" class="love-button">Seal Our Sacred Vow</button>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/wedding-traditions.js"></script>
+</body>
+</html>

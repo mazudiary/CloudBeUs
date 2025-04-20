@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Forest Spell</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/holding-hands.css">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&Caveat&Sacramento&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="forest-sky"></div>
+  <button class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="navbar">
+    <a href="index.html" class="nav-link">Could Be Us</a>
+    <a href="love-story.html" class="nav-link">Our Love Story</a>
+    <a href="love-letter.html" class="nav-link">Our Love Letter</a>
+    <a href="wedding-traditions.html" class="nav-link">Our Eternal Rituals</a>
+    <a href="holding-hands.html" class="nav-link active">Our Forest Spell</a>
+    <a href="hugging.html" class="nav-link">Our Lagoon Glow</a>
+  </nav>
+
+  <canvas id="leafCanvas"></canvas>
+  <canvas id="fireflyCanvas"></canvas>
+
+  <div class="hands-container">
+    <img src="assets/sparkling-vine.png" alt="Sparkling Vine" class="vine-deco top-left">
+    <img src="assets/sparkling-vine.png" alt="Sparkling Vine" class="vine-deco bottom-right">
+    <div class="hands-content">
+      <h1 id="handsTitle">Our Forest Spell</h1>
+      <p id="handsIntro">
+        My sparkle sprite, when our hands entwine, the forest bursts into song—leaves twirl, acorns bounce, and vines sparkle with our love!
+      </p>
+    </div>
+  </div>
+
+  <section class="locket-section">
+    <div class="locket-frame">
+      <img src="assets/holding-hands.gif" alt="Our Forest Spell" class="locket-image">
+      <div class="locket-glow"></div>
+      <div class="secret-message">You’re my wild magic! 🌟</div>
+    </div>
+    <p>
+      My sprite, our clasped hands cast a spell that makes the forest shimmer with joy.
+    </p>
+  </section>
+
+  <section class="message-section">
+    <h2>Grow a Sparkling Vine</h2>
+    <div id="messageText" class="message-text"></div>
+    <textarea id="messageInput" placeholder="Write a spell for our hands, my sparkle sprite..."></textarea>
+    <button id="submitMessage" class="love-button">Grow Our Vine 🌿</button>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/holding-hands.js"></script>
+</body>
+</html>

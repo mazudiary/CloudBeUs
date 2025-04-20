@@ -1,0 +1,683 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Amatic+SC:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Crimson Text', serif;
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #fffef0 0%, #f7d9d2 100%);
+  min-height: 100vh;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="#f7a8b8" d="M10 3.5c-1.5-2-3.5-2-5 0-1 1-1 2.5 0 3.5l5 5 5-5c1-1 1-2.5 0-3.5-1.5-2-3.5-2-5 0z"/></svg>'), auto;
+}
+
+/* Stars */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -4;
+}
+
+.star {
+  position: absolute;
+  background: #f7a8b8;
+  border-radius: 50%;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+.star.small { width: 2px; height: 2px; }
+.star.medium { width: 3px; height: 3px; }
+.star.large { width: 4px; height: 4px; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+    width: 100%;
+  }
+  
+  .nav-link {
+    color: #f5a6b8;
+    font-family: 'Sacramento', cursive;
+    font-size: 30px;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-shadow: 0 0 5px rgba(245, 166, 184, 0.5);
+  }
+  
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(245, 166, 184, 0.7);
+  }
+  
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.8);
+    color: #e63946;
+  }
+  
+
+/* Music Toggle */
+.music-toggle {
+  position: fixed;
+  top: 110px;
+  right: 55px;
+  background: linear-gradient(45deg, #c42b3a, #f7a8b8);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-family: 'Special Elite', cursive;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(245, 166, 184, 0.8);
+}
+
+/* Canvases */
+#heartCanvas, #bubbleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+/* Traditions Container */
+.traditions-container {
+  background: url('https://www.transparenttextures.com/patterns/old-paper.png') #fffef0;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(245, 166, 184, 0.4);
+  max-width: 800px;
+  width: 90%;
+  margin: 120px auto 50px;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+  border: 3px solid #c42b3a;
+  border-image: linear-gradient(45deg, #c42b3a, #f7a8b8) 1;
+  animation: pageTurn 1.5s ease forwards;
+}
+
+@keyframes pageTurn {
+  0% { transform: perspective(1000px) rotateY(-90deg); opacity: 0; }
+  100% { transform: perspective(1000px) rotateY(0); opacity: 1; }
+}
+
+.wax-seal {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 60px;
+  height: 60px;
+  filter: brightness(0.9) contrast(1.2);
+  animation: breakSeal 1.5s ease forwards;
+}
+
+@keyframes breakSeal {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.8; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.traditions-content {
+  text-align: center;
+  position: relative;
+}
+
+.ink-smudge {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: url('../assets/ink-smudge.png') no-repeat center/contain;
+  opacity: 0.3;
+}
+
+.ink-smudge.top { top: -20px; left: 20px; transform: rotate(45deg); }
+.ink-smudge.bottom { bottom: -20px; right: 20px; transform: rotate(-45deg); }
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #8b1e2a;
+  text-shadow: 0 0 8px rgba(245, 166, 184, 0.6);
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  position: relative;
+  animation: quillWrite 2s ease forwards;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: #c42b3a;
+  opacity: 0.5;
+}
+
+@keyframes quillWrite {
+  0% { opacity: 0; transform: translateX(-20px); filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+  100% { opacity: 1; transform: translateX(0); filter: brightness(1); }
+}
+
+p {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.4rem;
+  color: #333;
+  line-height: 1.8;
+  animation: candleFlicker 3s ease forwards;
+  letter-spacing: 0.5px;
+}
+
+@keyframes candleFlicker {
+  0% { opacity: 0; text-shadow: 0 0 0 transparent; }
+  50% { text-shadow: 0 0 10px rgba(245, 166, 184, 0.5); }
+  100% { opacity: 1; text-shadow: 0 0 5px rgba(245, 166, 184, 0.3); }
+}
+
+/* Traditions List */
+.traditions-list {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.tradition-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: relative;
+}
+
+.tradition-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tradition-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(transparent, #f7a8b8, transparent);
+  opacity: 0;
+  transition: width 1s ease, opacity 1s ease;
+  z-index: -1;
+}
+
+.tradition-item.visible::before {
+  width: 3px;
+  opacity: 0.5;
+  animation: flickerFlame 2s ease forwards;
+}
+
+@keyframes flickerFlame {
+  0% { height: 0; opacity: 0.3; }
+  50% { opacity: 0.7; transform: scaleY(1.1); }
+  100% { height: 100%; opacity: 0.5; }
+}
+
+.tradition-item.unity-candle:hover,
+.tradition-item.wedding-vows:hover {
+  box-shadow: 0 0 20px rgba(245, 166, 184, 0.6);
+  animation: flamePulse 1.5s infinite ease-in-out;
+}
+
+@keyframes flamePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.tradition-content {
+  background: url('https://www.transparenttextures.com/patterns/old-paper.png') #fffef0;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  border: 3px solid #c42b3a;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(245, 166, 184, 0.3);
+}
+
+.tradition-ribbon {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 20px;
+  animation: waveRibbon 3s infinite ease-in-out;
+}
+
+@keyframes waveRibbon {
+  0%, 100% { transform: translateX(-50%) skewY(0deg); }
+  50% { transform: translateX(-50%) skewY(5deg); }
+}
+
+.heart-draw {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 2px solid #c42b3a;
+  border-radius: 50% 50% 0 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: drawHeart 1s ease forwards 0.3s;
+  box-shadow: 0 0 10px rgba(245, 166, 184, 0.5);
+}
+
+.heart-draw::before,
+.heart-draw::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 2px solid #c42b3a;
+  border-radius: 50%;
+  opacity: 0;
+  animation: drawHeart 1s ease forwards 0.3s;
+}
+
+.heart-draw::before { top: -15px; left: 0; }
+.heart-draw::after { left: 15px; top: 0; }
+
+@keyframes drawHeart {
+  0% { opacity: 0; transform: scale(0) rotate(45deg); }
+  50% { transform: scale(1.2) rotate(45deg); box-shadow: 0 0 15px rgba(245, 166, 184, 0.7); }
+  100% { opacity: 1; transform: scale(1) rotate(45deg); box-shadow: 0 0 10px rgba(245, 166, 184, 0.5); }
+}
+
+.flame-icon {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 40px;
+  background: radial-gradient(circle, #f7a8b8 20%, transparent 70%);
+  clip-path: polygon(50% 0%, 80% 40%, 100% 80%, 50% 100%, 0% 80%, 20% 40%);
+  opacity: 0;
+  animation: flickerIcon 1.5s ease forwards 0.5s;
+  box-shadow: 0 0 15px rgba(245, 166, 184, 0.6);
+}
+
+.scroll-icon {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 30px;
+  background: linear-gradient(90deg, #fffef0, #f7d9d2);
+  border: 2px solid #c42b3a;
+  border-radius: 5px;
+  opacity: 0;
+  animation: unrollScroll 1.5s ease forwards 0.5s;
+  box-shadow: 0 0 15px rgba(245, 166, 184, 0.6);
+}
+
+@keyframes flickerIcon {
+  0% { opacity: 0; transform: translateX(-50%) scale(0); }
+  50% { opacity: 0.7; transform: translateX(-50%) scale(1.2); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+@keyframes unrollScroll {
+  0% { opacity: 0; transform: translateX(-50%) scaleY(0); }
+  100% { opacity: 1; transform: translateX(-50%) scaleY(1); }
+}
+
+.tradition-content h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  color: #8b1e2a;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(245, 166, 184, 0.5);
+}
+
+.tradition-content p {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.vow-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: linear-gradient(45deg, #c42b3a, #f7a8b8);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vow-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(245, 166, 184, 0.7);
+}
+
+.vow-text {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 10px;
+  min-height: 20px;
+  line-height: 1.6;
+  background: url('https://www.transparenttextures.com/patterns/old-paper.png') #fffef0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #c42b3a;
+}
+
+/* Polaroid Section */
+.polaroid-section {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.polaroid-frame {
+  position: relative;
+  margin: 30px auto;
+  width: 300px;
+  height: 350px;
+  background: url('../assets/polaroid.png') no-repeat center/contain;
+  filter: sepia(0.2);
+}
+
+.polaroid-image {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.polaroid-image:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1) drop-shadow(0 0 20px #f7a8b8);
+}
+
+.polaroid-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(245, 166, 184, 0.3) 10%, transparent 70%);
+  opacity: 0.4;
+  animation: heartbeatGlow 2s infinite ease-in-out;
+}
+
+@keyframes heartbeatGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.polaroid-section p {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.4rem;
+  color: #333;
+  text-shadow: 0 0 5px rgba(245, 166, 184, 0.3);
+}
+
+/* Custom Tradition Section */
+.custom-tradition {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  background: url('https://www.transparenttextures.com/patterns/old-paper.png') #fffef0;
+  border-radius: 20px;
+  border: 3px solid #c42b3a;
+}
+
+.custom-tradition h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #8b1e2a;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(245, 166, 184, 0.5);
+  letter-spacing: 2px;
+}
+
+.custom-tradition-text {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.6rem;
+  color: #333;
+  min-height: 50px;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  background: url('https://www.transparenttextures.com/patterns/old-paper.png') #fffef0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #c42b3a;
+}
+
+.custom-tradition textarea {
+  width: 100%;
+  max-width: 600px;
+  height: 120px;
+  padding: 15px;
+  border: 3px solid #c42b3a;
+  border-radius: 15px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.2rem;
+  resize: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.love-button {
+  margin-top: 20px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background: linear-gradient(45deg, #c42b3a, #f7a8b8);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Special Elite', cursive;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.love-button:hover {
+  background: linear-gradient(45deg, #8b1e2a, #c42b3a);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(245, 166, 184, 0.8);
+}
+
+/* Glow Effect */
+.glow {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top left, #ffb3c1, transparent 50%),
+              radial-gradient(circle at bottom right, #f7a8b8, transparent 50%);
+  z-index: -3;
+  opacity: 0.4;
+  animation: pulse 6s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+/* Sparkle */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #c42b3a;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkleFade 1.5s ease-out forwards;
+}
+
+@keyframes sparkleFade {
+  0% { opacity: 0.8; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5) translate(var(--spark-x), var(--spark-y)); }
+}
+
+/* Heart Trail */
+.heart-trail {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border: 1px solid #c42b3a;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: heartFade 2s ease-out forwards;
+}
+
+.heart-trail::before,
+.heart-trail::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border: 1px solid #c42b3a;
+  border-radius: 50%;
+}
+
+.heart-trail::before { top: -4px; left: 0; }
+.heart-trail::after { left: 4px; top: 0; }
+
+@keyframes heartFade {
+  0% { opacity: 0.7; transform: rotate(45deg) scale(1); }
+  100% { opacity: 0; transform: rotate(45deg) scale(0.5) translate(var(--heart-x), var(--heart-y)); }
+}
+
+/* Rose Petal */
+.rose-petal {
+  position: absolute;
+  width: var(--petal-width);
+  height: var(--petal-height);
+  background: var(--petal-color);
+  border-radius: 50% 50% 0 0;
+  animation: petalDrift 8s infinite ease-in-out;
+  box-shadow: 0 0 8px rgba(245, 166, 184, 0.5);
+  z-index: -1;
+}
+
+@keyframes petalDrift {
+  0% { opacity: 0; transform: translate(0, -100px) rotate(0deg); }
+  30% { opacity: 0.9; transform: translate(var(--drift-x), 0) rotate(45deg) skewY(10deg); }
+  70% { opacity: 0.9; transform: translate(calc(-1 * var(--drift-x)), 100px) rotate(-45deg) skewY(-10deg); }
+  100% { opacity: 0; transform: translate(0, 200px) rotate(0deg); }
+}
+
+/* Flame Animation */
+.flame-animation {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  background: radial-gradient(circle, #f7a8b8 20%, transparent 70%);
+  clip-path: polygon(50% 0%, 80% 40%, 100% 80%, 50% 100%, 0% 80%, 20% 40%);
+  opacity: 0;
+  animation: flickerFlameAnimation 2s ease-out forwards;
+  z-index: 1;
+}
+
+@keyframes flickerFlameAnimation {
+  0% { opacity: 0; transform: translateX(-50%) scale(0); }
+  50% { opacity: 0.7; transform: translateX(-50%) scale(1.2); }
+  100% { opacity: 0; transform: translateX(-50%) scale(1) translateY(-20px); }
+}
+
+/* Scroll Animation */
+.scroll-animation {
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  background: linear-gradient(90deg, #fffef0, #f7d9d2);
+  border: 2px solid #c42b3a;
+  border-radius: 5px;
+  opacity: 0;
+  animation: unrollScrollAnimation 2s ease-out forwards;
+  z-index: 1;
+}
+
+@keyframes unrollScrollAnimation {
+  0% { opacity: 0; transform: translateX(-50%) scaleY(0); }
+  100% { opacity: 0.7; transform: translateX(-50%) scaleY(1); }
+}
+
+/* Ink Splash */
+.ink-splash {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+  opacity: 0;
+  animation: inkFade 1s ease-out forwards;
+}
+
+@keyframes inkFade {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2) translate(var(--ink-x), var(--ink-y)); }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .traditions-container {
+    padding: 60px;
+  }
+
+  h1 { font-size: 4rem; }
+}
